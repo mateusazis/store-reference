@@ -1,15 +1,15 @@
 ﻿function GetBehaviorSettings()
 {
 	return {
-		"name":			"MyBehavior",			// as appears in 'add behavior' dialog, can be changed as long as "id" stays the same
-		"id":			"MyBehavior",			// this is used to identify this behavior and is saved to the project; never change it
+		"name":			"Store Reference",			// as appears in 'add behavior' dialog, can be changed as long as "id" stays the same
+		"id":			"StoreReference",			// this is used to identify this behavior and is saved to the project; never change it
 		"version":		"1.0",					// (float in x.y format) Behavior version - C2 shows compatibility warnings based on this
 		"description":	"<appears at the bottom of the add behavior dialog>",
 		"author":		"<your name/organisation>",
 		"help url":		"<your website or a manual entry on Scirra.com>",
 		"category":		"General",				// Prefer to re-use existing categories, but you can set anything here
 		"flags":		0						// uncomment lines to enable flags...
-					//	| bf_onlyone			// can only be added once to an object, e.g. solid
+						| bf_onlyone			// can only be added once to an object, e.g. solid
 	};
 };
 
@@ -40,7 +40,13 @@
 //				script_name);		// corresponding runtime function name
 				
 // example				
-AddCondition(0, cf_none, "Is moving", "My category", "{my} is moving", "Description for my condition!", "IsMoving");
+//AddCondition(0, cf_none, "Is moving", "My category", "{my} is moving", "Description for my condition!", "IsMoving");
+AddStringParam("Reference name", "The name of the reference variable", "\"\"");		// a string
+AddCondition(0, cf_none, "Has reference", "General", "Has reference {0}", "Checks if there is any stored reference with at least 1 instance!", "HasReference");
+
+AddStringParam("Reference name", "The name of the reference variable", "\"\"");		// a string
+AddObjectParam("Object type", "The object type to be obtained");									// a button to click and pick an object type
+AddCondition(1, cf_none, "Get reference", "General", "Get reference {0}{1}", "Retrieves all references of a certain type stored in a variable!", "GetReference");
 
 ////////////////////////////////////////
 // Actions
@@ -54,7 +60,16 @@ AddCondition(0, cf_none, "Is moving", "My category", "{my} is moving", "Descript
 //			 script_name);		// corresponding runtime function name
 
 // example
-AddAction(0, af_none, "Stop", "My category", "Stop {my}", "Description for my action!", "Stop");
+AddStringParam("Reference name", "The name of the reference variable", "\"\"");		// a string
+AddObjectParam("Object type", "The object type to be stored");									// a button to click and pick an object type
+AddAction(0, af_none, "Set Reference", "General", "Set {0} to {1}", "Stores a reference to an object!", "SetReference");
+
+AddStringParam("Reference name", "The name of the reference variable", "\"\"");		// a string
+AddAction(1, af_none, "Clear Reference", "General", "Clears variable {0}", "Clears all references stored in the variable!", "ClearReference");
+
+AddStringParam("Reference name", "The name of the reference variable", "\"\"");		// a string
+AddObjectParam("Object type", "The object type to be removed");									// a button to click and pick an object type
+AddAction(2, af_none, "Remove Reference", "General", "Removes {1} from {0}", "Clears a reference stored in the variable!", "RemoveReference");
 
 ////////////////////////////////////////
 // Expressions
@@ -81,7 +96,7 @@ ACESDone();
 // new cr.Property(ept_combo,		name,	"Item 1",		description, "Item 1|Item 2|Item 3")	// a dropdown list (initial_value is string of initially selected item)
 
 var property_list = [
-	new cr.Property(ept_integer, 	"My property",		77,		"An example property.")
+	//new cr.Property(ept_integer, 	"My property",		77,		"An example property.")
 	];
 	
 // Called by IDE when a new behavior type is to be created
