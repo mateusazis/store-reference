@@ -7,11 +7,10 @@
     <unique-id>14kg4elpkduo8</unique-id>
     <saved-with-version>11900</saved-with-version>
     <used-plugins>
+        <plugin author="Scirra" id="Button" version="1">Button</plugin>
         <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
-        <plugin author="Scirra" id="Button" version="1">Button</plugin>
-        <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="&lt;your name/organisation&gt;" id="AiyraDebugger" version="1">AiyraDebugger</plugin>
     </used-plugins>
     <used-behaviors>
@@ -47,18 +46,7 @@
             </behaviors>
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.504854">
-                        <collision-poly>
-                            <point x="0.240741" y="0.252427" />
-                            <point x="0.5" y="0.0776699" />
-                            <point x="0.685185" y="0.330097" />
-                            <point x="0.944444" y="0.495146" />
-                            <point x="0.703704" y="0.68932" />
-                            <point x="0.5" y="0.961165" />
-                            <point x="0.194444" y="0.796117" />
-                            <point x="0.0462963" y="0.495146" />
-                        </collision-poly>
-                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504854" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -66,18 +54,7 @@
             <plugin id="Sprite" />
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
-                    <frame duration="1" hotspotX="0.503448" hotspotY="0.5">
-                        <collision-poly>
-                            <point x="0.268966" y="0.39" />
-                            <point x="0.496552" y="0.24" />
-                            <point x="0.931035" y="0.1" />
-                            <point x="0.724138" y="0.5" />
-                            <point x="0.931035" y="0.9" />
-                            <point x="0.496552" y="0.75" />
-                            <point x="0.248276" y="0.64" />
-                            <point x="0.0206897" y="0.5" />
-                        </collision-poly>
-                    </frame>
+                    <frame duration="1" hotspotX="0.503448" hotspotY="0.5" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -86,9 +63,6 @@
         </object-type>
         <object-type name="Mouse">
             <plugin id="Mouse" />
-        </object-type>
-        <object-type name="Function">
-            <plugin id="Function" />
         </object-type>
         <object-type name="Title">
             <plugin id="Text" />
@@ -100,6 +74,7 @@
     <families />
     <layout-folder expanded="1">
         <layout>Add Test.xml</layout>
+        <layout>Remove Test.xml</layout>
         <layout>Set Test.xml</layout>
         <layout>Clear Test.xml</layout>
     </layout-folder>
@@ -107,11 +82,11 @@
         <event-sheet>EVS Add.xml</event-sheet>
         <event-sheet>EVS Set.xml</event-sheet>
         <event-sheet>EVS Clear.xml</event-sheet>
+        <event-sheet>EVS Remove.xml</event-sheet>
     </event-folder>
     <global-instances>
         <global-instance type="AiyraDebugger" />
         <global-instance type="Mouse" />
-        <global-instance type="Function" />
     </global-instances>
     <sounds-folder expanded="1" />
     <music-folder expanded="1" />

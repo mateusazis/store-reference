@@ -42,11 +42,11 @@
 // example				
 //AddCondition(0, cf_none, "Is moving", "My category", "{my} is moving", "Description for my condition!", "IsMoving");
 AddStringParam("Reference name", "The name of the reference variable", "\"\"");		// a string
-AddCondition(0, cf_not_invertible, "Has reference", "General", "Has reference {0}", "Checks if there is any stored reference with at least 1 instance!", "HasReference");
+AddCondition(0, cf_none, "Has reference", "General", "Has reference {0}", "Checks if there is any stored reference with at least 1 instance!", "HasReference");
 
 AddStringParam("Reference name", "The name of the reference variable", "\"\"");		// a string
 AddObjectParam("Object type", "The object type to be obtained");									// a button to click and pick an object type
-AddCondition(1, cf_none, "Get reference", "General", "Get reference {0}{1}", "Retrieves all references of a certain type stored in a variable!", "GetReference");
+AddCondition(1, cf_not_invertible, "Get reference", "General", "Get reference {0}{1}", "Retrieves all references of a certain type stored in a variable!", "GetReference");
 
 ////////////////////////////////////////
 // Actions

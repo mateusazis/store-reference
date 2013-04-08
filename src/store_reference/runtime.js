@@ -158,6 +158,14 @@ cr.behaviors.StoreReference = function(runtime)
 		log(resp);
 	}
 
+	function sameType(refArray, instance){
+		if(refArray.length == 0)
+			return true;
+
+		log("comparing types " + refArray[0].type + " and " + instance.type);
+		return refArray[0].type == instance.type;
+	}
+
 	behinstProto.AddReference = function (varName, objType){
 		var sol = objType.getCurrentSol();
 		if(sol.select_all)
@@ -169,12 +177,14 @@ cr.behaviors.StoreReference = function(runtime)
 
 		for(var i in instances){
 			var currentInstance = instances[i];
-			var searchResult = binaryUIDSearch(currentInstance, myRefs);
-			if(!searchResult.found){
-				var pos = searchResult.pos;
-				if(myRefs[pos] && myRefs[pos]["uid"] < currentInstance["uid"])
-					pos++;
-				myRefs.splice(pos, 0, currentInstance);
+			if(sameType(myRefs, currentInstance)){
+				var searchResult = binaryUIDSearch(currentInstance, myRefs);
+				if(!searchResult.found){
+					var pos = searchResult.pos;
+					if(myRefs[pos] && myRefs[pos]["uid"] < currentInstance["uid"])
+						pos++;
+					myRefs.splice(pos, 0, currentInstance);
+				}
 			}
 		}
 		printRefs(myRefs);
@@ -190,35 +200,9 @@ cr.behaviors.StoreReference = function(runtime)
 
 	Acts.prototype.SetReference = function (varName, objType)
 	{
-		log("set reference");
-		// delete this.references[varName];
-		log("this references: " + this.ClearReference.toSource());
 		this.ClearReference(varName);
 		this.AddReference(varName, objType);
-		// _clearReference(varName);
-//		var func = this.ClearReference;
-//		log("func is " + func);
-		log("prototype")
-		// _addReference(varName, objType);
-		// var sol = objType.getCurrentSol();
-		
-		// if(sol.select_all)
-		// 	var instances = sol.type.instances;
-		// else
-		// 	instances = sol.instances;
-
-		// // if(typeof(this.references[varName]) === "undefined"){
-
-		// // }
-		// this.references[varName] = instances;
-		// log(this.references[varName].length);
-
-		//log(varName);
-		//log(objType);
-		// ... see other behaviors for example implementations ...
 	};
-
-	
 
 	Acts.prototype.RemoveReference = function(varName, objType){
 		var sol = objType.getCurrentSol();
@@ -228,60 +212,13 @@ cr.behaviors.StoreReference = function(runtime)
 		else
 			instances = sol.instances;
 
-		var myRefs = this.references[varName];
-		if(myRefs){
-			log("My refs are storing " + myRefs.length + " instances");
-			for(var j in instances){
-				var instanceToRemove = instances[j];
-				// log("uid: ");
-				// log(instanceToRemove.uid);
-				var str = "";
-				for(var k in myRefs)
-					str += (typeof(myRefs[k]) !== "undefined" ? 1 : 0) + ",";
-				log(str);
-			 	for(var i in myRefs){
-			 		log("i: " + i);
-			 		var curr = myRefs[i];
-			 		log("curr " + typeof(curr));
-			 		//log(curr);
-			 		log("to remove: " + typeof(instanceToRemove));
-			 		// log(instanceToRemove);
-			 		if(curr){
-		 				var uid1 = curr["uid"];
-				 		var uid2 = instanceToRemove["uid"];
-				 		if(uid1 == uid2)
-				 			myRefs = myRefs.splice(i, 1);
-
-			 		}
-			 		
-			 	}
-				// if(instanceToRemove in myRefs){
-				// 	log("In!");
-
-				// 	log("equals test: " + (instanceToRemove == instanceToRemove));
-				// 	log("uid: ");
-				// 	log(instanceToRemove.uid);
-				// 	var index;
-				// 	for(var i in myRefs){
-				// 		log("for " + i);
-				// 		if(myRefs[i] === instanceToRemove){
-				// 			log("equal");
-				// 			index = i;
-				// 			break;
-				// 		} else 
-				// 			log("not equal");
-				// 	}
-					
-					//var index = myRefs.indexOf(instanceToRemove);
-				// 	log("index: " + index);
-				// 	myRefs.splice(index, 1);
-				// 	//log("deleting? " + delete myRefs[index]);
-				// }
-			}
-
+		var myRefs = this.getRefs(varName);
+		for(var j in instances){
+			var searched = instances[j];
+			var searchResult = binaryUIDSearch(searched, myRefs);
+			if(searchResult.found)
+				myRefs.splice(searchResult.pos, 1);
 		}
-		log("remaining refs");
-		log(myRefs.length);
 	}
 	
 	// ... other actions here ...

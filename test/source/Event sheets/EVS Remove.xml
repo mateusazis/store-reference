@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2eventsheet>
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
-    <name>EVS Set</name>
+    <name>EVS Remove</name>
     <events>
         <include>EVS Add</include>
         <event-block>
@@ -13,22 +13,9 @@
                 </condition>
             </conditions>
             <actions>
-                <action behavior="StoreReference" id="0" name="Set Reference" type="Player">
+                <action behavior="StoreReference" id="2" name="Remove Reference" type="Player">
                     <param id="0" name="Reference name">&quot;Blosh&quot;</param>
                     <param id="1" name="Object type">Enemy</param>
-                </action>
-            </actions>
-        </event-block>
-        <event-block>
-            <conditions>
-                <condition id="0" name="On click" type="Mouse">
-                    <param id="0" name="Mouse button">1</param>
-                    <param id="1" name="Click type">0</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action behavior="StoreReference" id="1" name="Clear Reference" type="Player">
-                    <param id="0" name="Reference name">&quot;Blosh&quot;</param>
                 </action>
             </actions>
         </event-block>

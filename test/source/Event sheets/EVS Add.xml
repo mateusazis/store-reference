@@ -20,6 +20,16 @@
         </event-block>
         <event-block>
             <conditions>
+                <condition id="-1" name="Every tick" type="System" />
+            </conditions>
+            <actions>
+                <action id="-16" name="Set opacity" type="Enemy">
+                    <param id="0" name="Opacity">100</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
                 <condition behavior="StoreReference" id="1" name="Get reference" type="Player">
                     <param id="0" name="Reference name">&quot;Blosh&quot;</param>
                     <param id="1" name="Object type">Enemy</param>

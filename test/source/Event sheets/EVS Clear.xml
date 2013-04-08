@@ -3,16 +3,6 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>EVS Clear</name>
     <events>
-        <event-block>
-            <conditions>
-                <condition id="-1" name="Every tick" type="System" />
-            </conditions>
-            <actions>
-                <action id="-16" name="Set opacity" type="Enemy">
-                    <param id="0" name="Opacity">100</param>
-                </action>
-            </actions>
-        </event-block>
         <include>EVS Set</include>
         <event-block>
             <conditions>
