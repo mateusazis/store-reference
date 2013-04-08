@@ -1,4 +1,4 @@
-﻿// ECMAScript 5 strict mode
+// ECMAScript 5 strict mode
 "use strict";
 
 assert2(cr, "cr namespace not created");
@@ -93,6 +93,18 @@ cr.behaviors.StoreReference = function(runtime)
 		// dt is the amount of time passed since the last tick, in case it's a movement
 	};
 
+	behinstProto.getRefs = function(varName){
+		var resp = this.references[varName];
+		if(typeof(resp) === "undefined")
+			resp = this.references[varName] = [];
+		return resp;
+	}
+
+	behinstProto.ClearReference = function(varName) {
+	 	log("clear reference called for " + varName);
+		delete this.references[varName];
+	};
+
 	//////////////////////////////////////
 	// Conditions
 	function Cnds() {};
@@ -107,8 +119,9 @@ cr.behaviors.StoreReference = function(runtime)
 
 	Cnds.prototype.GetReference = function (varName, objType)
 	{
-		if(typeof(this.references[varName]) === "undefined"){
-			log("returning false!");
+		var myRefs = this.getRefs(varName);
+		if(typeof(myRefs) === "undefined" || myRefs.length == 0){
+			//log("returning false!");
 			return false;
 		}
 
@@ -116,7 +129,7 @@ cr.behaviors.StoreReference = function(runtime)
 		var sol = objType.getCurrentSol();
 		sol.instances = this.references[varName].slice(0);
 		sol.select_all = false;
-		log("ending sol with " + sol.instances.length + " instances");
+		//log("ending sol with " + sol.instances.length + " instances");
 		return true;
 		/*for(var instance in this.references[varName]){
 			var sol = objType.getCurrentSol();
@@ -131,30 +144,81 @@ cr.behaviors.StoreReference = function(runtime)
 
 	//////////////////////////////////////
 	// Actions
-	function Acts() {};
+	var Acts = function() {
+	};
 
-	// the example action
-	Acts.prototype.SetReference = function (varName, objType)
-	{
-		
+	function printRefs(array){
+		var resp = "[";
+		var first = true;
+		for(var i in array){
+			resp += (first ? "" : ", ") + array[i].uid + " ";
+			first = false;
+		}
+		resp += "]"
+		log(resp);
+	}
 
+	behinstProto.AddReference = function (varName, objType){
 		var sol = objType.getCurrentSol();
-		
 		if(sol.select_all)
 			var instances = sol.type.instances;
 		else
 			instances = sol.instances;
-		this.references[varName] = instances;
-		log(this.references[varName].length);
+
+		var myRefs = this.getRefs(varName);
+
+		for(var i in instances){
+			var currentInstance = instances[i];
+			var searchResult = binaryUIDSearch(currentInstance, myRefs);
+			if(!searchResult.found){
+				var pos = searchResult.pos;
+				if(myRefs[pos] && myRefs[pos]["uid"] < currentInstance["uid"])
+					pos++;
+				myRefs.splice(pos, 0, currentInstance);
+			}
+		}
+		printRefs(myRefs);
+	}
+
+	Acts.prototype.AddReference = function (varName, objType){
+		this.AddReference(varName, objType);
+	}
+
+	Acts.prototype.ClearReference = function(varName){
+		this.ClearReference(varName);
+	}
+
+	Acts.prototype.SetReference = function (varName, objType)
+	{
+		log("set reference");
+		// delete this.references[varName];
+		log("this references: " + this.ClearReference.toSource());
+		this.ClearReference(varName);
+		this.AddReference(varName, objType);
+		// _clearReference(varName);
+//		var func = this.ClearReference;
+//		log("func is " + func);
+		log("prototype")
+		// _addReference(varName, objType);
+		// var sol = objType.getCurrentSol();
+		
+		// if(sol.select_all)
+		// 	var instances = sol.type.instances;
+		// else
+		// 	instances = sol.instances;
+
+		// // if(typeof(this.references[varName]) === "undefined"){
+
+		// // }
+		// this.references[varName] = instances;
+		// log(this.references[varName].length);
 
 		//log(varName);
 		//log(objType);
 		// ... see other behaviors for example implementations ...
 	};
 
-	Acts.prototype.ClearReference = function(varName){
-		delete this.references[varName];
-	}
+	
 
 	Acts.prototype.RemoveReference = function(varName, objType){
 		var sol = objType.getCurrentSol();
@@ -229,13 +293,13 @@ cr.behaviors.StoreReference = function(runtime)
 	function Exps() {};
 
 	// the example expression
-	Exps.prototype.MyExpression = function (ret)	// 'ret' must always be the first parameter - always return the expression's result through it!
-	{
-		ret.set_int(1337);				// return our value
-		// ret.set_float(0.5);			// for returning floats
-		// ret.set_string("Hello");		// for ef_return_string
-		// ret.set_any("woo");			// for ef_return_any, accepts either a number or string
-	};
+	// Exps.prototype.MyExpression = function (ret)	// 'ret' must always be the first parameter - always return the expression's result through it!
+	// {
+	// 	ret.set_int(1337);				// return our value
+	// 	// ret.set_float(0.5);			// for returning floats
+	// 	// ret.set_string("Hello");		// for ef_return_string
+	// 	// ret.set_any("woo");			// for ef_return_any, accepts either a number or string
+	// };
 	
 	// ... other expressions here ...
 	

@@ -2,7 +2,7 @@
 // need to write scripts common to both once.
 function binaryUIDSearch(instance, array){
 	var start = 0, end = array.length - 1;
-	var center;
+	var center = Math.floor((start + end) / 2);
 	var searchedUID = instance["uid"];
 	while(start <= end){
 		center = Math.floor((start + end) / 2);

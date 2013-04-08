@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>EVS Set</name>
+    <events>
+        <include>EVS Add</include>
+        <event-block>
+            <conditions>
+                <condition id="6" name="On object clicked" type="Mouse">
+                    <param id="0" name="Mouse button">2</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">Enemy</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="StoreReference" disabled="1" id="1" name="Clear Reference" type="Player">
+                    <param id="0" name="Reference name">&quot;Blosh&quot;</param>
+                </action>
+                <action behavior="StoreReference" id="0" name="Set Reference" type="Player">
+                    <param id="0" name="Reference name">&quot;Blosh&quot;</param>
+                    <param id="1" name="Object type">Enemy</param>
+                </action>
+                <action id="0" name="Call function" type="Function">
+                    <param id="0" name="Name">&quot;ResetEnemies&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="0" name="On function" type="Function">
+                    <param id="0" name="Name">&quot;ResetEnemies&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block>
+                    <conditions>
+                        <condition id="-11" name="For Each" type="System">
+                            <param id="0" name="Object">Enemy</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" type="Enemy">
+                            <param id="0" name="Opacity">100</param>
+                        </action>
+                        <action id="0" name="Log" type="AiyraDebugger">
+                            <param id="0" name="Message">&quot;set to 100&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block disabled="1">
+            <conditions>
+                <condition behavior="StoreReference" id="1" name="Get reference" type="Player">
+                    <param id="0" name="Reference name">&quot;Blosh&quot;</param>
+                    <param id="1" name="Object type">Enemy</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-16" name="Set opacity" type="Enemy">
+                    <param id="0" name="Opacity">50</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="0" name="On click" type="Mouse">
+                    <param id="0" name="Mouse button">1</param>
+                    <param id="1" name="Click type">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="StoreReference" id="1" name="Clear Reference" type="Player">
+                    <param id="0" name="Reference name">&quot;Blosh&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

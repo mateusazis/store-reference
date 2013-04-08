@@ -7,9 +7,12 @@
     <unique-id>14kg4elpkduo8</unique-id>
     <saved-with-version>11900</saved-with-version>
     <used-plugins>
-        <plugin author="&lt;your name/organisation&gt;" id="AiyraDebugger" version="1">AiyraDebugger</plugin>
         <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
+        <plugin author="Scirra" id="Button" version="1">Button</plugin>
+        <plugin author="Scirra" id="Function" version="1">Function</plugin>
+        <plugin author="&lt;your name/organisation&gt;" id="AiyraDebugger" version="1">AiyraDebugger</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="&lt;your name/organisation&gt;" id="StoreReference" version="1">Store Reference</behavior>
@@ -84,17 +87,31 @@
         <object-type name="Mouse">
             <plugin id="Mouse" />
         </object-type>
+        <object-type name="Function">
+            <plugin id="Function" />
+        </object-type>
+        <object-type name="Title">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="ClearButton">
+            <plugin id="Button" />
+        </object-type>
     </object-folder>
     <families />
     <layout-folder expanded="1">
-        <layout>Layout 1.xml</layout>
+        <layout>Add Test.xml</layout>
+        <layout>Set Test.xml</layout>
+        <layout>Clear Test.xml</layout>
     </layout-folder>
     <event-folder expanded="1">
-        <event-sheet>Event sheet 1.xml</event-sheet>
+        <event-sheet>EVS Add.xml</event-sheet>
+        <event-sheet>EVS Set.xml</event-sheet>
+        <event-sheet>EVS Clear.xml</event-sheet>
     </event-folder>
     <global-instances>
         <global-instance type="AiyraDebugger" />
         <global-instance type="Mouse" />
+        <global-instance type="Function" />
     </global-instances>
     <sounds-folder expanded="1" />
     <music-folder expanded="1" />
