@@ -7,11 +7,11 @@
     <unique-id>14kg4elpkduo8</unique-id>
     <saved-with-version>11900</saved-with-version>
     <used-plugins>
+        <plugin author="&lt;your name/organisation&gt;" id="AiyraDebugger" version="1">AiyraDebugger</plugin>
         <plugin author="Scirra" id="Button" version="1">Button</plugin>
         <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
-        <plugin author="&lt;your name/organisation&gt;" id="AiyraDebugger" version="1">AiyraDebugger</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="&lt;your name/organisation&gt;" id="StoreReference" version="1">Store Reference</behavior>
@@ -69,6 +69,9 @@
         </object-type>
         <object-type name="ClearButton">
             <plugin id="Button" />
+        </object-type>
+        <object-type name="CountText">
+            <plugin id="Text" />
         </object-type>
     </object-folder>
     <families />

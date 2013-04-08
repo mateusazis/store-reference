@@ -41,12 +41,10 @@
 				
 // example				
 //AddCondition(0, cf_none, "Is moving", "My category", "{my} is moving", "Description for my condition!", "IsMoving");
-AddStringParam("Reference name", "The name of the reference variable", "\"\"");		// a string
-AddCondition(0, cf_none, "Has reference", "General", "Has reference {0}", "Checks if there is any stored reference with at least 1 instance!", "HasReference");
 
 AddStringParam("Reference name", "The name of the reference variable", "\"\"");		// a string
 AddObjectParam("Object type", "The object type to be obtained");									// a button to click and pick an object type
-AddCondition(1, cf_not_invertible, "Get reference", "General", "Get reference {0}{1}", "Retrieves all references of a certain type stored in a variable!", "GetReference");
+AddCondition(0, cf_not_invertible, "Get reference", "General", "Get reference {0}{1}", "Retrieves all references of a certain type stored in a variable!", "GetReference");
 
 ////////////////////////////////////////
 // Actions
@@ -86,7 +84,8 @@ AddAction(3, af_none, "Add Reference", "General", "Add {1} to {0}", "Add another
 //				 description);	// description in expressions panel
 
 // example
-// AddExpression(0, ef_return_number, "Leet expression", "My category", "MyExpression", "Return the number 1337.");
+AddStringParam("Reference name", "The name of the reference variable", "\"\"");		// a string
+AddExpression(0, ef_return_number, "Reference Count", "General", "RefCount", "Returns the number of references stored in a variable.");
 
 ////////////////////////////////////////
 ACESDone();

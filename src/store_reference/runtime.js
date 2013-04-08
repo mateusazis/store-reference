@@ -51,7 +51,6 @@ cr.behaviors.StoreReference = function(runtime)
 		// Load properties
 		//this.myProperty = this.properties[0];
 		this.references = {};
-		log("on create");
 		// object is sealed after this call, so make sure any properties you'll ever need are created, e.g.
 		// this.myValue = 0;
 	};
@@ -105,6 +104,14 @@ cr.behaviors.StoreReference = function(runtime)
 		delete this.references[varName];
 	};
 
+	behinstProto.RemoveSingleReference = function(refArray, instance){
+		var searchResult = binaryUIDSearch(instance, refArray);
+		if(searchResult.found)
+			refArray.splice(searchResult.pos, 1);
+		log("remove single");
+		printRefs(refArray);
+	}
+
 	//////////////////////////////////////
 	// Conditions
 	function Cnds() {};
@@ -116,6 +123,17 @@ cr.behaviors.StoreReference = function(runtime)
 		//return typeof(this.references[varName]) !== "undefined";
 		return typeof(this.references[varName]) !== "undefined";
 	};
+
+	function printRefs(array){
+		var resp = "[";
+		var first = true;
+		for(var i in array){
+			resp += (first ? "" : ", ") + array[i].uid + " ";
+			first = false;
+		}
+		resp += "]"
+		log(resp);
+	}
 
 	Cnds.prototype.GetReference = function (varName, objType)
 	{
@@ -129,13 +147,9 @@ cr.behaviors.StoreReference = function(runtime)
 		var sol = objType.getCurrentSol();
 		sol.instances = this.references[varName].slice(0);
 		sol.select_all = false;
-		//log("ending sol with " + sol.instances.length + " instances");
+		//log("returning ");
+		//printRefs(sol.instances);
 		return true;
-		/*for(var instance in this.references[varName]){
-			var sol = objType.getCurrentSol();
-			log("instance is");
-			sol.instances = 
-		}*/
 	};
 	
 	// ... other conditions here ...
@@ -147,16 +161,7 @@ cr.behaviors.StoreReference = function(runtime)
 	var Acts = function() {
 	};
 
-	function printRefs(array){
-		var resp = "[";
-		var first = true;
-		for(var i in array){
-			resp += (first ? "" : ", ") + array[i].uid + " ";
-			first = false;
-		}
-		resp += "]"
-		log(resp);
-	}
+	
 
 	function sameType(refArray, instance){
 		if(refArray.length == 0)
@@ -184,6 +189,15 @@ cr.behaviors.StoreReference = function(runtime)
 					if(myRefs[pos] && myRefs[pos]["uid"] < currentInstance["uid"])
 						pos++;
 					myRefs.splice(pos, 0, currentInstance);
+
+					//when the entity is destroyed, it should be removed from the list
+					var oldOnDestroy = currentInstance.onDestroy;
+					var removeFunc = this.RemoveSingleReference;
+					currentInstance.onDestroy = function(){
+						removeFunc(myRefs, this);
+						if(oldOnDestroy)
+							oldOnDestroy();
+					};
 				}
 			}
 		}
@@ -213,12 +227,8 @@ cr.behaviors.StoreReference = function(runtime)
 			instances = sol.instances;
 
 		var myRefs = this.getRefs(varName);
-		for(var j in instances){
-			var searched = instances[j];
-			var searchResult = binaryUIDSearch(searched, myRefs);
-			if(searchResult.found)
-				myRefs.splice(searchResult.pos, 1);
-		}
+		for(var j in instances)
+			this.RemoveSingleReference(myRefs, instances[j]);
 	}
 	
 	// ... other actions here ...
@@ -228,6 +238,12 @@ cr.behaviors.StoreReference = function(runtime)
 	//////////////////////////////////////
 	// Expressions
 	function Exps() {};
+
+	Exps.prototype.RefCount = function (ret, varName)	// 'ret' must always be the first parameter - always return the expression's result through it!
+	{
+		var myRefs = this.getRefs(varName);
+	 	ret.set_int(myRefs.length);	
+	}
 
 	// the example expression
 	// Exps.prototype.MyExpression = function (ret)	// 'ret' must always be the first parameter - always return the expression's result through it!
