@@ -51,5 +51,15 @@
                 </action>
             </actions>
         </event-block>
+        <event-block>
+            <conditions>
+                <condition id="0" name="On clicked" type="GoBackBtn" />
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" type="System">
+                    <param id="0" name="Layout">Test Selection</param>
+                </action>
+            </actions>
+        </event-block>
     </events>
 </c2eventsheet>

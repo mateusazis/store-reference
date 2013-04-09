@@ -10,10 +10,12 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <display name="HTML5" />
     </configurations>
     <open-tabs>
-        <layout>Remove Test</layout>
         <layout>Add Test</layout>
-        <event-sheet active="1">EVS Remove</event-sheet>
-        <event-sheet>EVS Add</event-sheet>
+        <layout>Remove Test</layout>
+        <layout>Set Test</layout>
+        <layout>Clear Test</layout>
+        <layout>Test Selection</layout>
+        <event-sheet active="1">EVS Set</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="Project settings" />

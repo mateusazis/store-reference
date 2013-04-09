@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>EVS Test Selection</name>
+    <events>
+        <event-block>
+            <conditions>
+                <condition id="0" name="On clicked" type="TestSelectionButton" />
+            </conditions>
+            <actions>
+                <action id="-25" name="Go to layout (by name)" type="System">
+                    <param id="0" name="Layout">TestSelectionButton.testLayoutName</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

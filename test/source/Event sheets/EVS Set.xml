@@ -13,23 +13,7 @@
                 </condition>
             </conditions>
             <actions>
-                <action behavior="StoreReference" id="0" name="Set Reference" type="Player">
-                    <param id="0" name="Reference name">&quot;Blosh&quot;</param>
-                    <param id="1" name="Object type">Enemy</param>
-                </action>
-            </actions>
-        </event-block>
-        <event-block>
-            <conditions>
-                <condition id="0" name="On click" type="Mouse">
-                    <param id="0" name="Mouse button">1</param>
-                    <param id="1" name="Click type">0</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action behavior="StoreReference" id="1" name="Clear Reference" type="Player">
-                    <param id="0" name="Reference name">&quot;Blosh&quot;</param>
-                </action>
+                <action id="-9" name="Destroy" type="Enemy" />
             </actions>
         </event-block>
     </events>
