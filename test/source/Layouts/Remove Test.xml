@@ -35,6 +35,14 @@
                     <behavior-instances>
                         <behavior-instance type="StoreReference" />
                     </behavior-instances>
+                    <effect-instances>
+                        <effect-instance type="Bulge">
+                            <parameters>
+                                <radius>0.5</radius>
+                                <scale>0.4</scale>
+                            </parameters>
+                        </effect-instance>
+                    </effect-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>

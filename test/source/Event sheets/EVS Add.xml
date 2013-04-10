@@ -61,5 +61,29 @@
                 </action>
             </actions>
         </event-block>
+        <event-block>
+            <conditions>
+                <condition behavior="StoreReference" id="1" name="Is reference set" type="Player">
+                    <param id="0" name="Reference name">&quot;Blosh&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-27" name="Set effect enabled" type="Player">
+                    <param id="0" name="Mode">1</param>
+                    <param id="1" name="Effect">&quot;Bulge&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-22" name="Else" type="System" />
+            </conditions>
+            <actions>
+                <action id="-27" name="Set effect enabled" type="Player">
+                    <param id="0" name="Mode">0</param>
+                    <param id="1" name="Effect">&quot;Bulge&quot;</param>
+                </action>
+            </actions>
+        </event-block>
     </events>
 </c2eventsheet>

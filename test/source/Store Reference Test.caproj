@@ -7,16 +7,18 @@
     <unique-id>14kg4elpkduo8</unique-id>
     <saved-with-version>11900</saved-with-version>
     <used-plugins>
-        <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
+        <plugin author="&lt;your name/organisation&gt;" id="AiyraDebugger" version="1">AiyraDebugger</plugin>
+        <plugin author="Scirra" id="Button" version="1">Button</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
-        <plugin author="Scirra" id="Button" version="1">Button</plugin>
-        <plugin author="&lt;your name/organisation&gt;" id="AiyraDebugger" version="1">AiyraDebugger</plugin>
+        <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="&lt;your name/organisation&gt;" id="StoreReference" version="1">Store Reference</behavior>
     </used-behaviors>
-    <used-effects />
+    <used-effects>
+        <effect author="Brad Larson" id="bulge">Bulge</effect>
+    </used-effects>
     <configurations>
         <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
     </configurations>
@@ -45,6 +47,11 @@
                     <behavior id="StoreReference" />
                 </behavior-type>
             </behaviors>
+            <effects>
+                <effect-type name="Bulge">
+                    <effect id="bulge" />
+                </effect-type>
+            </effects>
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.504854" />

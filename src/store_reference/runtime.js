@@ -151,6 +151,12 @@ cr.behaviors.StoreReference = function(runtime)
 		//printRefs(sol.instances);
 		return true;
 	};
+
+	Cnds.prototype.IsReferenceSet = function (varName)
+	{
+		var myRefs = this.getRefs(varName);
+		return myRefs.length > 0;
+	};
 	
 	// ... other conditions here ...
 	

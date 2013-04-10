@@ -46,6 +46,9 @@ AddStringParam("Reference name", "The name of the reference variable", "\"\"");	
 AddObjectParam("Object type", "The object type to be obtained");									// a button to click and pick an object type
 AddCondition(0, cf_not_invertible, "Get reference", "General", "Get reference {0}{1}", "Retrieves all references of a certain type stored in a variable!", "GetReference");
 
+AddStringParam("Reference name", "The name of the reference variable", "\"\"");		// a string
+AddCondition(1, cf_none, "Is reference set", "General", "{0} is set", "Checks if a variable is storing any reference!", "IsReferenceSet");
+
 ////////////////////////////////////////
 // Actions
 
