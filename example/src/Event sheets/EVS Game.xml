@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>EVS Game</name>
+    <events>
+        <variable constant="1" name="MAX_ATTRACT_DIST" static="0" type="number">200</variable>
+        <variable constant="1" name="ATTRACT_COEF" static="0" type="number">1</variable>
+        <event-group description="" title="Main">
+            <sub-events>
+                <event-block>
+                    <conditions>
+                        <condition id="-8" name="Compare two values" type="System">
+                            <param id="0" name="First value">distance(Car.X, Car.Y, Metal.X, Metal.Y)</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Second value">MAX_ATTRACT_DIST</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-23" name="Move at angle" type="Metal">
+                            <param id="0" name="Angle">angle(self.X, self.Y, Car.X, Car.Y)</param>
+                            <param id="1" name="Distance">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>
