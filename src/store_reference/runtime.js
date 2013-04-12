@@ -51,6 +51,7 @@ cr.behaviors.StoreReference = function(runtime)
 		// Load properties
 		//this.myProperty = this.properties[0];
 		this.references = {};
+		this.orderArrays = {};
 		// object is sealed after this call, so make sure any properties you'll ever need are created, e.g.
 		// this.myValue = 0;
 	};
@@ -97,20 +98,30 @@ cr.behaviors.StoreReference = function(runtime)
 		if(typeof(resp) === "undefined")
 			resp = this.references[varName] = [];
 		return resp;
-	}
+	};
+
+	behinstProto.getOrderArray = function(varName){
+		var resp = this.orderArrays[varName];
+		if(typeof(resp) === "undefined")
+			resp = this.orderArrays[varName] = [];
+		return resp;
+	};
 
 	behinstProto.ClearReference = function(varName) {
 	 	log("clear reference called for " + varName);
 		delete this.references[varName];
+		delete this.orderArrays[varName];
 	};
 
-	behinstProto.RemoveSingleReference = function(refArray, instance){
+	behinstProto.RemoveSingleReference = function(refArray, instance, varName){
 		var searchResult = binaryUIDSearch(instance, refArray);
-		if(searchResult.found)
+		if(searchResult.found){
 			refArray.splice(searchResult.pos, 1);
+			this.onInstanceRemoved(searchResult.pos, varName);
+		}
 		log("remove single");
 		printRefs(refArray);
-	}
+	};
 
 	//////////////////////////////////////
 	// Conditions
@@ -152,6 +163,34 @@ cr.behaviors.StoreReference = function(runtime)
 		return true;
 	};
 
+	behinstProto.GetReferenceAt = function(index, varName, objType){
+		log("called here!");
+		var myOrders = this.getOrderArray(varName);
+		if(index >= 0 && index < myOrders.length){
+			var sol = objType.getCurrentSol();
+			var myRefs = this.getRefs(varName);
+			var storedIndex = myOrders[index];
+			sol.instances = myRefs.slice(storedIndex, storedIndex+1);
+			sol.select_all = false;
+
+			return true;
+		}
+		return false;
+	};
+
+	Cnds.prototype.GetReferenceAt = function(index, varName, objType){
+		return this.GetReferenceAt(index, varName, objType);
+	}
+
+	Cnds.prototype.GetFirstReference = function(varName, objType){
+		return this.GetReferenceAt(0, varName, objType);
+	};
+
+	Cnds.prototype.GetLastReference = function(varName, objType){
+		var myRefs = this.getRefs(varName);
+		return this.GetReferenceAt(myRefs.length - 1, varName, objType);
+	};
+
 	Cnds.prototype.IsReferenceSet = function (varName)
 	{
 		var myRefs = this.getRefs(varName);
@@ -177,6 +216,31 @@ cr.behaviors.StoreReference = function(runtime)
 		return refArray[0].type == instance.type;
 	}
 
+	behinstProto.onInstanceAdded = function(refArrayIndex, varName){
+		var orderArray = this.getOrderArray(varName);
+		for(var i in orderArray)
+			if(orderArray[i] >= refArrayIndex)
+				orderArray[i]++;
+		orderArray.push(refArrayIndex);
+		log("On ADDED: Order array: " + orderArray)
+	};
+
+	behinstProto.onInstanceRemoved = function(refArrayIndex, varName){
+		var orderArray = this.getOrderArray(varName);
+		var orderStoreIndex;
+		for(var i in orderArray){
+			log("order array is " + orderArray);
+			var current = orderArray[i];
+			if(current == refArrayIndex)
+				orderStoreIndex = i;
+
+			else if(current > refArrayIndex)
+				orderArray[i]--;
+		}
+		orderArray.splice(orderStoreIndex, 1);
+		log("On removed: Order array: " + orderArray)
+	};
+
 	behinstProto.AddReference = function (varName, objType){
 		var sol = objType.getCurrentSol();
 		if(sol.select_all)
@@ -200,10 +264,12 @@ cr.behaviors.StoreReference = function(runtime)
 					var oldOnDestroy = currentInstance.onDestroy;
 					var removeFunc = this.RemoveSingleReference;
 					currentInstance.onDestroy = function(){
-						removeFunc(myRefs, this);
+						removeFunc(myRefs, this, varName);
 						if(oldOnDestroy)
 							oldOnDestroy();
 					};
+
+					this.onInstanceAdded(pos, varName);
 				}
 			}
 		}
@@ -234,7 +300,7 @@ cr.behaviors.StoreReference = function(runtime)
 
 		var myRefs = this.getRefs(varName);
 		for(var j in instances)
-			this.RemoveSingleReference(myRefs, instances[j]);
+			this.RemoveSingleReference(myRefs, instances[j], varName);
 	}
 	
 	// ... other actions here ...

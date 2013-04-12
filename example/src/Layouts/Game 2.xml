@@ -46,6 +46,7 @@
                                 <default-controls>No</default-controls>
                             </properties>
                         </behavior-instance>
+                        <behavior-instance type="StoreReference" />
                     </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
@@ -115,6 +116,7 @@
                                 <default-controls>Yes</default-controls>
                             </properties>
                         </behavior-instance>
+                        <behavior-instance type="StoreReference" />
                     </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
@@ -176,9 +178,19 @@
                         <speedX>120</speedX>
                         <magY>24</magY>
                         <speedY>240</speedY>
+                        <launching>false</launching>
                     </instance-variables>
                     <behavior-instances>
                         <behavior-instance type="StoreReference" />
+                        <behavior-instance type="Bullet">
+                            <properties>
+                                <speed>400</speed>
+                                <acceleration>0</acceleration>
+                                <gravity>0</gravity>
+                                <bounce-off-solids>No</bounce-off-solids>
+                                <set-angle>Yes</set-angle>
+                            </properties>
+                        </behavior-instance>
                     </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
@@ -207,9 +219,19 @@
                         <speedX>120</speedX>
                         <magY>24</magY>
                         <speedY>240</speedY>
+                        <launching>false</launching>
                     </instance-variables>
                     <behavior-instances>
                         <behavior-instance type="StoreReference" />
+                        <behavior-instance type="Bullet">
+                            <properties>
+                                <speed>400</speed>
+                                <acceleration>0</acceleration>
+                                <gravity>0</gravity>
+                                <bounce-off-solids>No</bounce-off-solids>
+                                <set-angle>Yes</set-angle>
+                            </properties>
+                        </behavior-instance>
                     </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
@@ -238,9 +260,19 @@
                         <speedX>120</speedX>
                         <magY>24</magY>
                         <speedY>240</speedY>
+                        <launching>false</launching>
                     </instance-variables>
                     <behavior-instances>
                         <behavior-instance type="StoreReference" />
+                        <behavior-instance type="Bullet">
+                            <properties>
+                                <speed>400</speed>
+                                <acceleration>0</acceleration>
+                                <gravity>0</gravity>
+                                <bounce-off-solids>No</bounce-off-solids>
+                                <set-angle>Yes</set-angle>
+                            </properties>
+                        </behavior-instance>
                     </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
@@ -269,9 +301,19 @@
                         <speedX>120</speedX>
                         <magY>24</magY>
                         <speedY>240</speedY>
+                        <launching>false</launching>
                     </instance-variables>
                     <behavior-instances>
                         <behavior-instance type="StoreReference" />
+                        <behavior-instance type="Bullet">
+                            <properties>
+                                <speed>400</speed>
+                                <acceleration>0</acceleration>
+                                <gravity>0</gravity>
+                                <bounce-off-solids>No</bounce-off-solids>
+                                <set-angle>Yes</set-angle>
+                            </properties>
+                        </behavior-instance>
                     </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
@@ -300,9 +342,19 @@
                         <speedX>120</speedX>
                         <magY>24</magY>
                         <speedY>240</speedY>
+                        <launching>false</launching>
                     </instance-variables>
                     <behavior-instances>
                         <behavior-instance type="StoreReference" />
+                        <behavior-instance type="Bullet">
+                            <properties>
+                                <speed>400</speed>
+                                <acceleration>0</acceleration>
+                                <gravity>0</gravity>
+                                <bounce-off-solids>No</bounce-off-solids>
+                                <set-angle>Yes</set-angle>
+                            </properties>
+                        </behavior-instance>
                     </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
@@ -331,9 +383,19 @@
                         <speedX>120</speedX>
                         <magY>24</magY>
                         <speedY>240</speedY>
+                        <launching>false</launching>
                     </instance-variables>
                     <behavior-instances>
                         <behavior-instance type="StoreReference" />
+                        <behavior-instance type="Bullet">
+                            <properties>
+                                <speed>400</speed>
+                                <acceleration>0</acceleration>
+                                <gravity>0</gravity>
+                                <bounce-off-solids>No</bounce-off-solids>
+                                <set-angle>Yes</set-angle>
+                            </properties>
+                        </behavior-instance>
                     </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
@@ -362,9 +424,19 @@
                         <speedX>120</speedX>
                         <magY>24</magY>
                         <speedY>240</speedY>
+                        <launching>false</launching>
                     </instance-variables>
                     <behavior-instances>
                         <behavior-instance type="StoreReference" />
+                        <behavior-instance type="Bullet">
+                            <properties>
+                                <speed>400</speed>
+                                <acceleration>0</acceleration>
+                                <gravity>0</gravity>
+                                <bounce-off-solids>No</bounce-off-solids>
+                                <set-angle>Yes</set-angle>
+                            </properties>
+                        </behavior-instance>
                     </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
@@ -393,9 +465,19 @@
                         <speedX>120</speedX>
                         <magY>24</magY>
                         <speedY>240</speedY>
+                        <launching>false</launching>
                     </instance-variables>
                     <behavior-instances>
                         <behavior-instance type="StoreReference" />
+                        <behavior-instance type="Bullet">
+                            <properties>
+                                <speed>400</speed>
+                                <acceleration>0</acceleration>
+                                <gravity>0</gravity>
+                                <bounce-off-solids>No</bounce-off-solids>
+                                <set-angle>Yes</set-angle>
+                            </properties>
+                        </behavior-instance>
                     </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
@@ -424,9 +506,19 @@
                         <speedX>120</speedX>
                         <magY>24</magY>
                         <speedY>240</speedY>
+                        <launching>false</launching>
                     </instance-variables>
                     <behavior-instances>
                         <behavior-instance type="StoreReference" />
+                        <behavior-instance type="Bullet">
+                            <properties>
+                                <speed>400</speed>
+                                <acceleration>0</acceleration>
+                                <gravity>0</gravity>
+                                <bounce-off-solids>No</bounce-off-solids>
+                                <set-angle>Yes</set-angle>
+                            </properties>
+                        </behavior-instance>
                     </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
@@ -455,9 +547,19 @@
                         <speedX>120</speedX>
                         <magY>24</magY>
                         <speedY>240</speedY>
+                        <launching>false</launching>
                     </instance-variables>
                     <behavior-instances>
                         <behavior-instance type="StoreReference" />
+                        <behavior-instance type="Bullet">
+                            <properties>
+                                <speed>400</speed>
+                                <acceleration>0</acceleration>
+                                <gravity>0</gravity>
+                                <bounce-off-solids>No</bounce-off-solids>
+                                <set-angle>Yes</set-angle>
+                            </properties>
+                        </behavior-instance>
                     </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>

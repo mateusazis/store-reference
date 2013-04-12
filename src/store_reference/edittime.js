@@ -44,10 +44,23 @@
 
 AddStringParam("Reference name", "The name of the reference variable", "\"\"");		// a string
 AddObjectParam("Object type", "The object type to be obtained");									// a button to click and pick an object type
-AddCondition(0, cf_not_invertible, "Get reference", "General", "Get reference {0}{1}", "Retrieves all references of a certain type stored in a variable!", "GetReference");
+AddCondition(0, cf_not_invertible, "Get reference", "General", "Get reference {0}{1}", "Retrieves all references of a certain type stored in a variable.", "GetReference");
 
 AddStringParam("Reference name", "The name of the reference variable", "\"\"");		// a string
-AddCondition(1, cf_none, "Is reference set", "General", "{0} is set", "Checks if a variable is storing any reference!", "IsReferenceSet");
+AddCondition(1, cf_none, "Is reference set", "General", "{0} is set", "Checks if a variable is storing any reference.", "IsReferenceSet");
+
+AddNumberParam("Store index", "The index of the stored reference (0-based, sorted by UID)", "0");		// a string
+AddStringParam("Reference name", "The name of the reference variable", "\"\"");		// a string
+AddObjectParam("Object type", "The object type to be obtained");									// a button to click and pick an object type
+AddCondition(2, cf_none, "Get nth reference", "Index picking", "Get {2} at {0} from {1}", "Gets one object reference at a certain index from a list of stored objects.", "GetReferenceAt");
+
+AddStringParam("Reference name", "The name of the reference variable", "\"\"");		// a string
+AddObjectParam("Object type", "The object type to be obtained");									// a button to click and pick an object type
+AddCondition(3, cf_none, "Get first reference", "Index picking", "Get first {1} at {0}", "Gets the oldest reference added to the variable.", "GetFirstReference");
+
+AddStringParam("Reference name", "The name of the reference variable", "\"\"");		// a string
+AddObjectParam("Object type", "The object type to be obtained");									// a button to click and pick an object type
+AddCondition(4, cf_none, "Get last reference", "Index picking", "Get last {1} at {0}", "Gets the youngest reference added to the variable.", "GetLastReference");
 
 ////////////////////////////////////////
 // Actions
