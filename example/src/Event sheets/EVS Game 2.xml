@@ -250,5 +250,37 @@
                 </action>
             </actions>
         </event-block>
+        <event-block>
+            <conditions>
+                <condition id="0" name="On key pressed" type="Keyboard">
+                    <param id="0" name="Key">74 (J)</param>
+                </condition>
+                <condition behavior="StoreReference" id="3" name="Get first reference" type="Player">
+                    <param id="0" name="Reference name">&quot;&quot;</param>
+                    <param id="1" name="Object type">Car</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-16" name="Set opacity" type="Car">
+                    <param id="0" name="Opacity">30</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="0" name="On key pressed" type="Keyboard">
+                    <param id="0" name="Key">75 (K)</param>
+                </condition>
+                <condition behavior="StoreReference" id="0" name="Get reference" type="Player">
+                    <param id="0" name="Reference name">&quot;&quot;</param>
+                    <param id="1" name="Object type">Car</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-16" name="Set opacity" type="Car">
+                    <param id="0" name="Opacity">30</param>
+                </action>
+            </actions>
+        </event-block>
     </events>
 </c2eventsheet>

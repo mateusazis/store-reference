@@ -146,10 +146,24 @@ cr.behaviors.StoreReference = function(runtime)
 		log(resp);
 	}
 
+	function checkTypeForArray(array, objType){
+		if(array.length == 0)
+			return true;
+		
+		return array[0].type == objType;
+	}
+
+	function sameType(refArray, instance){
+		if(refArray.length == 0)
+			return true;
+
+		return refArray[0].type == instance.type;
+	}
+
 	Cnds.prototype.GetReference = function (varName, objType)
 	{
 		var myRefs = this.getRefs(varName);
-		if(typeof(myRefs) === "undefined" || myRefs.length == 0){
+		if(typeof(myRefs) === "undefined" || myRefs.length == 0 || !checkTypeForArray(myRefs, objType)){
 			//log("returning false!");
 			return false;
 		}
@@ -164,16 +178,17 @@ cr.behaviors.StoreReference = function(runtime)
 	};
 
 	behinstProto.GetReferenceAt = function(index, varName, objType){
-		log("called here!");
 		var myOrders = this.getOrderArray(varName);
 		if(index >= 0 && index < myOrders.length){
 			var sol = objType.getCurrentSol();
 			var myRefs = this.getRefs(varName);
-			var storedIndex = myOrders[index];
-			sol.instances = myRefs.slice(storedIndex, storedIndex+1);
-			sol.select_all = false;
+			if(checkTypeForArray(myRefs, objType)){
+				var storedIndex = myOrders[index];
+				sol.instances = myRefs.slice(storedIndex, storedIndex+1);
+				sol.select_all = false;
 
-			return true;
+				return true;
+			}
 		}
 		return false;
 	};
@@ -208,13 +223,9 @@ cr.behaviors.StoreReference = function(runtime)
 
 	
 
-	function sameType(refArray, instance){
-		if(refArray.length == 0)
-			return true;
+	
 
-		log("comparing types " + refArray[0].type + " and " + instance.type);
-		return refArray[0].type == instance.type;
-	}
+
 
 	behinstProto.onInstanceAdded = function(refArrayIndex, varName){
 		var orderArray = this.getOrderArray(varName);

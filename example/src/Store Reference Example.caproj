@@ -7,10 +7,10 @@
     <unique-id>fvvw09uloluj</unique-id>
     <saved-with-version>11900</saved-with-version>
     <used-plugins>
-        <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
+        <plugin author="&lt;your name/organisation&gt;" id="AiyraDebugger" version="1">AiyraDebugger</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
-        <plugin author="&lt;your name/organisation&gt;" id="AiyraDebugger" version="1">AiyraDebugger</plugin>
+        <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="Scirra" id="Bullet" version="1">Bullet</behavior>
