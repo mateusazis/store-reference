@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Items</name>
+    <events>
+        <event-block>
+            <conditions>
+                <condition id="-2" name="On start of layout" type="System" />
+            </conditions>
+            <actions>
+                <action behavior="Bullet" id="5" name="Set enabled" type="Item">
+                    <param id="0" name="State">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="0" name="On collision with another object" type="Player">
+                    <param id="0" name="Object">Item</param>
+                </condition>
+                <condition behavior="StoreReference" id="1" inverted="1" name="Is reference set" type="Item">
+                    <param id="0" name="Reference name">&quot;&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="StoreReference" id="0" name="Set Reference" type="Item">
+                    <param id="0" name="Reference name">&quot;&quot;</param>
+                    <param id="1" name="Object type">Player</param>
+                </action>
+                <action id="-10" name="Set value" type="Item">
+                    <param id="0" name="Instance variable">elapsed</param>
+                    <param id="1" name="Value">random(START_RANGE)</param>
+                </action>
+                <action behavior="StoreReference" id="3" name="Add Reference" type="Player">
+                    <param id="0" name="Reference name">&quot;&quot;</param>
+                    <param id="1" name="Object type">Item</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" type="Item">
+                    <param id="0" name="Instance variable">launching</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block>
+                    <conditions>
+                        <condition id="-1" name="Every tick" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" type="Item">
+                            <param id="0" name="Instance variable">elapsed</param>
+                            <param id="1" name="Value">(self.elapsed + dt) % 360</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-11" name="For Each" type="System">
+                                    <param id="0" name="Object">Item</param>
+                                </condition>
+                                <condition behavior="StoreReference" id="0" name="Get reference" type="Item">
+                                    <param id="0" name="Reference name">&quot;&quot;</param>
+                                    <param id="1" name="Object type">Player</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Set position" type="Item">
+                                    <param id="0" name="X">Player.X + sin(self.elapsed * self.speedX) * self.magX</param>
+                                    <param id="1" name="Y">Player.Y + sin(self.elapsed * self.speedY) * self.magY</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-1" name="Compare X" type="Item">
+                    <param id="0" name="Comparison">4</param>
+                    <param id="1" name="X co-ordinate">566</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Bullet" id="5" name="Set enabled" type="Item">
+                    <param id="0" name="State">0</param>
+                </action>
+                <action id="-1" name="Set X" type="Item">
+                    <param id="0" name="X">566</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block>
+                    <conditions>
+                        <condition behavior="StoreReference" id="0" name="Get reference" type="Item">
+                            <param id="0" name="Reference name">&quot;&quot;</param>
+                            <param id="1" name="Object type">Player</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" type="Player">
+                            <param id="0" name="Object">BonusText</param>
+                            <param id="1" name="Layer">self.LayerNumber</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+    </events>
+</c2eventsheet>

@@ -3,8 +3,8 @@
     <name>Game</name>
     <event-sheet>EVS Game</event-sheet>
     <size>
-        <width>1280</width>
-        <height>1024</height>
+        <width>760</width>
+        <height>570</height>
     </size>
     <margins>
         <horizontal>500</horizontal>
@@ -12,7 +12,7 @@
     </margins>
     <unbounded-scrolling>0</unbounded-scrolling>
     <layers>
-        <layer name="Layer 0">
+        <layer name="BG">
             <initially-visible>1</initially-visible>
             <background-color>255,255,255</background-color>
             <transparent>0</transparent>
@@ -26,139 +26,184 @@
             <blend-mode>0</blend-mode>
             <effect-fallback>0</effect-fallback>
             <instances>
-                <instance type="Car">
+                <instance type="FloorBG">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <hotspot>Top-left</hotspot>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>0</x>
+                        <y>0</y>
+                        <z>0</z>
+                        <width>760</width>
+                        <height>570</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="Rocks">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <hotspot>Top-left</hotspot>
+                    </properties>
+                    <behavior-instances>
+                        <behavior-instance type="Solid" />
+                    </behavior-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>531</x>
+                        <y>0</y>
+                        <z>0</z>
+                        <width>64</width>
+                        <height>571</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+            </instances>
+            <effects />
+        </layer>
+        <layer name="Layer 0">
+            <initially-visible>1</initially-visible>
+            <background-color>255,255,255</background-color>
+            <transparent>1</transparent>
+            <parallax>
+                <x>1</x>
+                <y>1</y>
+            </parallax>
+            <zoom-rate>1</zoom-rate>
+            <opacity>1</opacity>
+            <force-own-texture>0</force-own-texture>
+            <blend-mode>0</blend-mode>
+            <effect-fallback>0</effect-fallback>
+            <instances>
+                <instance type="Player">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
                         <collisions>Enabled</collisions>
                     </properties>
+                    <instance-variables>
+                        <playerNumber>1</playerNumber>
+                    </instance-variables>
                     <behavior-instances>
-                        <behavior-instance type="Car">
+                        <behavior-instance type="8Direction">
                             <properties>
-                                <max-speed>350</max-speed>
-                                <acceleration>200</acceleration>
+                                <max-speed>200</max-speed>
+                                <acceleration>600</acceleration>
                                 <deceleration>500</deceleration>
-                                <steer-speed>500</steer-speed>
-                                <drift-recover>185</drift-recover>
-                                <friction>0.4</friction>
-                                <set-angle>Yes</set-angle>
-                                <default-controls>Yes</default-controls>
+                                <directions>8 directions</directions>
+                                <set-angle>No</set-angle>
+                                <default-controls>No</default-controls>
+                            </properties>
+                        </behavior-instance>
+                        <behavior-instance type="StoreReference" />
+                        <behavior-instance type="BoundToLayout">
+                            <properties>
+                                <bound-by>Edge</bound-by>
                             </properties>
                         </behavior-instance>
                     </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>208.011672974</x>
-                        <y>300.154205322</y>
+                        <x>101</x>
+                        <y>249</y>
                         <z>0</z>
-                        <width>98.190193176</width>
-                        <height>66.748016357</height>
+                        <width>67</width>
+                        <height>69</height>
                         <depth>0</depth>
-                        <hotspotX>0.49932158</hotspotX>
-                        <hotspotY>0.50099802</hotspotY>
+                        <hotspotX>0.50746268</hotspotX>
+                        <hotspotY>0.507246375</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="Metal">
+                <instance type="Player">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
                         <collisions>Enabled</collisions>
                     </properties>
+                    <instance-variables>
+                        <playerNumber>2</playerNumber>
+                    </instance-variables>
+                    <behavior-instances>
+                        <behavior-instance type="8Direction">
+                            <properties>
+                                <max-speed>200</max-speed>
+                                <acceleration>600</acceleration>
+                                <deceleration>500</deceleration>
+                                <directions>8 directions</directions>
+                                <set-angle>No</set-angle>
+                                <default-controls>No</default-controls>
+                            </properties>
+                        </behavior-instance>
+                        <behavior-instance type="StoreReference" />
+                        <behavior-instance type="BoundToLayout">
+                            <properties>
+                                <bound-by>Edge</bound-by>
+                            </properties>
+                        </behavior-instance>
+                    </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>274</x>
-                        <y>106</y>
+                        <x>130</x>
+                        <y>446</y>
                         <z>0</z>
-                        <width>32</width>
-                        <height>32</height>
+                        <width>67</width>
+                        <height>69</height>
                         <depth>0</depth>
-                        <hotspotX>0.5</hotspotX>
-                        <hotspotY>0.5</hotspotY>
+                        <hotspotX>0.50746268</hotspotX>
+                        <hotspotY>0.507246375</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="Metal">
+                <instance type="Item">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
                         <collisions>Enabled</collisions>
                     </properties>
+                    <instance-variables>
+                        <elapsed>0</elapsed>
+                        <magX>50</magX>
+                        <speedX>120</speedX>
+                        <magY>24</magY>
+                        <speedY>240</speedY>
+                        <launching>false</launching>
+                    </instance-variables>
+                    <behavior-instances>
+                        <behavior-instance type="StoreReference" />
+                        <behavior-instance type="Bullet">
+                            <properties>
+                                <speed>400</speed>
+                                <acceleration>0</acceleration>
+                                <gravity>0</gravity>
+                                <bounce-off-solids>No</bounce-off-solids>
+                                <set-angle>Yes</set-angle>
+                            </properties>
+                        </behavior-instance>
+                    </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>243</x>
-                        <y>126</y>
+                        <x>275</x>
+                        <y>136</y>
                         <z>0</z>
-                        <width>32</width>
-                        <height>32</height>
-                        <depth>0</depth>
-                        <hotspotX>0.5</hotspotX>
-                        <hotspotY>0.5</hotspotY>
-                        <angle>0</angle>
-                        <opacity>1</opacity>
-                    </world>
-                </instance>
-                <instance type="Metal">
-                    <properties>
-                        <initial-visibility>Visible</initial-visibility>
-                        <initial-frame>0</initial-frame>
-                        <collisions>Enabled</collisions>
-                    </properties>
-                    <blend-mode>0</blend-mode>
-                    <effect-fallback>0</effect-fallback>
-                    <world>
-                        <x>174</x>
-                        <y>83</y>
-                        <z>0</z>
-                        <width>32</width>
-                        <height>32</height>
-                        <depth>0</depth>
-                        <hotspotX>0.5</hotspotX>
-                        <hotspotY>0.5</hotspotY>
-                        <angle>0</angle>
-                        <opacity>1</opacity>
-                    </world>
-                </instance>
-                <instance type="Metal">
-                    <properties>
-                        <initial-visibility>Visible</initial-visibility>
-                        <initial-frame>0</initial-frame>
-                        <collisions>Enabled</collisions>
-                    </properties>
-                    <blend-mode>0</blend-mode>
-                    <effect-fallback>0</effect-fallback>
-                    <world>
-                        <x>209</x>
-                        <y>155</y>
-                        <z>0</z>
-                        <width>32</width>
-                        <height>32</height>
-                        <depth>0</depth>
-                        <hotspotX>0.5</hotspotX>
-                        <hotspotY>0.5</hotspotY>
-                        <angle>0</angle>
-                        <opacity>1</opacity>
-                    </world>
-                </instance>
-                <instance type="Metal">
-                    <properties>
-                        <initial-visibility>Visible</initial-visibility>
-                        <initial-frame>0</initial-frame>
-                        <collisions>Enabled</collisions>
-                    </properties>
-                    <blend-mode>0</blend-mode>
-                    <effect-fallback>0</effect-fallback>
-                    <world>
-                        <x>171</x>
-                        <y>147</y>
-                        <z>0</z>
-                        <width>32</width>
-                        <height>32</height>
+                        <width>16</width>
+                        <height>16</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
@@ -166,20 +211,40 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="Metal">
+                <instance type="Item">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
                         <collisions>Enabled</collisions>
                     </properties>
+                    <instance-variables>
+                        <elapsed>0</elapsed>
+                        <magX>50</magX>
+                        <speedX>120</speedX>
+                        <magY>24</magY>
+                        <speedY>240</speedY>
+                        <launching>false</launching>
+                    </instance-variables>
+                    <behavior-instances>
+                        <behavior-instance type="StoreReference" />
+                        <behavior-instance type="Bullet">
+                            <properties>
+                                <speed>400</speed>
+                                <acceleration>0</acceleration>
+                                <gravity>0</gravity>
+                                <bounce-off-solids>No</bounce-off-solids>
+                                <set-angle>Yes</set-angle>
+                            </properties>
+                        </behavior-instance>
+                    </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>216</x>
-                        <y>78</y>
+                        <x>324</x>
+                        <y>138</y>
                         <z>0</z>
-                        <width>32</width>
-                        <height>32</height>
+                        <width>16</width>
+                        <height>16</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
@@ -187,20 +252,40 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="Metal">
+                <instance type="Item">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
                         <collisions>Enabled</collisions>
                     </properties>
+                    <instance-variables>
+                        <elapsed>0</elapsed>
+                        <magX>50</magX>
+                        <speedX>120</speedX>
+                        <magY>24</magY>
+                        <speedY>240</speedY>
+                        <launching>false</launching>
+                    </instance-variables>
+                    <behavior-instances>
+                        <behavior-instance type="StoreReference" />
+                        <behavior-instance type="Bullet">
+                            <properties>
+                                <speed>400</speed>
+                                <acceleration>0</acceleration>
+                                <gravity>0</gravity>
+                                <bounce-off-solids>No</bounce-off-solids>
+                                <set-angle>Yes</set-angle>
+                            </properties>
+                        </behavior-instance>
+                    </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>244</x>
-                        <y>137</y>
+                        <x>411</x>
+                        <y>53</y>
                         <z>0</z>
-                        <width>32</width>
-                        <height>32</height>
+                        <width>16</width>
+                        <height>16</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
@@ -208,20 +293,40 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="Metal">
+                <instance type="Item">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
                         <collisions>Enabled</collisions>
                     </properties>
+                    <instance-variables>
+                        <elapsed>0</elapsed>
+                        <magX>50</magX>
+                        <speedX>120</speedX>
+                        <magY>24</magY>
+                        <speedY>240</speedY>
+                        <launching>false</launching>
+                    </instance-variables>
+                    <behavior-instances>
+                        <behavior-instance type="StoreReference" />
+                        <behavior-instance type="Bullet">
+                            <properties>
+                                <speed>400</speed>
+                                <acceleration>0</acceleration>
+                                <gravity>0</gravity>
+                                <bounce-off-solids>No</bounce-off-solids>
+                                <set-angle>Yes</set-angle>
+                            </properties>
+                        </behavior-instance>
+                    </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>192</x>
-                        <y>121</y>
+                        <x>459</x>
+                        <y>165</y>
                         <z>0</z>
-                        <width>32</width>
-                        <height>32</height>
+                        <width>16</width>
+                        <height>16</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
@@ -229,20 +334,40 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="Metal">
+                <instance type="Item">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
                         <collisions>Enabled</collisions>
                     </properties>
+                    <instance-variables>
+                        <elapsed>0</elapsed>
+                        <magX>50</magX>
+                        <speedX>120</speedX>
+                        <magY>24</magY>
+                        <speedY>240</speedY>
+                        <launching>false</launching>
+                    </instance-variables>
+                    <behavior-instances>
+                        <behavior-instance type="StoreReference" />
+                        <behavior-instance type="Bullet">
+                            <properties>
+                                <speed>400</speed>
+                                <acceleration>0</acceleration>
+                                <gravity>0</gravity>
+                                <bounce-off-solids>No</bounce-off-solids>
+                                <set-angle>Yes</set-angle>
+                            </properties>
+                        </behavior-instance>
+                    </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>283</x>
-                        <y>190</y>
+                        <x>291</x>
+                        <y>220</y>
                         <z>0</z>
-                        <width>32</width>
-                        <height>32</height>
+                        <width>16</width>
+                        <height>16</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
@@ -250,20 +375,40 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="Metal">
+                <instance type="Item">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
                         <collisions>Enabled</collisions>
                     </properties>
+                    <instance-variables>
+                        <elapsed>0</elapsed>
+                        <magX>50</magX>
+                        <speedX>120</speedX>
+                        <magY>24</magY>
+                        <speedY>240</speedY>
+                        <launching>false</launching>
+                    </instance-variables>
+                    <behavior-instances>
+                        <behavior-instance type="StoreReference" />
+                        <behavior-instance type="Bullet">
+                            <properties>
+                                <speed>400</speed>
+                                <acceleration>0</acceleration>
+                                <gravity>0</gravity>
+                                <bounce-off-solids>No</bounce-off-solids>
+                                <set-angle>Yes</set-angle>
+                            </properties>
+                        </behavior-instance>
+                    </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>297</x>
-                        <y>142</y>
+                        <x>380</x>
+                        <y>223</y>
                         <z>0</z>
-                        <width>32</width>
-                        <height>32</height>
+                        <width>16</width>
+                        <height>16</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
@@ -271,20 +416,40 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="Metal">
+                <instance type="Item">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
                         <collisions>Enabled</collisions>
                     </properties>
+                    <instance-variables>
+                        <elapsed>0</elapsed>
+                        <magX>50</magX>
+                        <speedX>120</speedX>
+                        <magY>24</magY>
+                        <speedY>240</speedY>
+                        <launching>false</launching>
+                    </instance-variables>
+                    <behavior-instances>
+                        <behavior-instance type="StoreReference" />
+                        <behavior-instance type="Bullet">
+                            <properties>
+                                <speed>400</speed>
+                                <acceleration>0</acceleration>
+                                <gravity>0</gravity>
+                                <bounce-off-solids>No</bounce-off-solids>
+                                <set-angle>Yes</set-angle>
+                            </properties>
+                        </behavior-instance>
+                    </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>229</x>
-                        <y>189</y>
+                        <x>371</x>
+                        <y>157</y>
                         <z>0</z>
-                        <width>32</width>
-                        <height>32</height>
+                        <width>16</width>
+                        <height>16</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
@@ -292,20 +457,40 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="Metal">
+                <instance type="Item">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
                         <collisions>Enabled</collisions>
                     </properties>
+                    <instance-variables>
+                        <elapsed>0</elapsed>
+                        <magX>50</magX>
+                        <speedX>120</speedX>
+                        <magY>24</magY>
+                        <speedY>240</speedY>
+                        <launching>false</launching>
+                    </instance-variables>
+                    <behavior-instances>
+                        <behavior-instance type="StoreReference" />
+                        <behavior-instance type="Bullet">
+                            <properties>
+                                <speed>400</speed>
+                                <acceleration>0</acceleration>
+                                <gravity>0</gravity>
+                                <bounce-off-solids>No</bounce-off-solids>
+                                <set-angle>Yes</set-angle>
+                            </properties>
+                        </behavior-instance>
+                    </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>152</x>
-                        <y>191</y>
+                        <x>328</x>
+                        <y>223</y>
                         <z>0</z>
-                        <width>32</width>
-                        <height>32</height>
+                        <width>16</width>
+                        <height>16</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
@@ -313,20 +498,40 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="Metal">
+                <instance type="Item">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
                         <collisions>Enabled</collisions>
                     </properties>
+                    <instance-variables>
+                        <elapsed>0</elapsed>
+                        <magX>50</magX>
+                        <speedX>120</speedX>
+                        <magY>24</magY>
+                        <speedY>240</speedY>
+                        <launching>false</launching>
+                    </instance-variables>
+                    <behavior-instances>
+                        <behavior-instance type="StoreReference" />
+                        <behavior-instance type="Bullet">
+                            <properties>
+                                <speed>400</speed>
+                                <acceleration>0</acceleration>
+                                <gravity>0</gravity>
+                                <bounce-off-solids>No</bounce-off-solids>
+                                <set-angle>Yes</set-angle>
+                            </properties>
+                        </behavior-instance>
+                    </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>126</x>
-                        <y>122</y>
+                        <x>295</x>
+                        <y>180</y>
                         <z>0</z>
-                        <width>32</width>
-                        <height>32</height>
+                        <width>16</width>
+                        <height>16</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
@@ -334,20 +539,40 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="Metal">
+                <instance type="Item">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-frame>0</initial-frame>
                         <collisions>Enabled</collisions>
                     </properties>
+                    <instance-variables>
+                        <elapsed>0</elapsed>
+                        <magX>50</magX>
+                        <speedX>120</speedX>
+                        <magY>24</magY>
+                        <speedY>240</speedY>
+                        <launching>false</launching>
+                    </instance-variables>
+                    <behavior-instances>
+                        <behavior-instance type="StoreReference" />
+                        <behavior-instance type="Bullet">
+                            <properties>
+                                <speed>400</speed>
+                                <acceleration>0</acceleration>
+                                <gravity>0</gravity>
+                                <bounce-off-solids>No</bounce-off-solids>
+                                <set-angle>Yes</set-angle>
+                            </properties>
+                        </behavior-instance>
+                    </behavior-instances>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>193</x>
-                        <y>210</y>
+                        <x>208</x>
+                        <y>231</y>
                         <z>0</z>
-                        <width>32</width>
-                        <height>32</height>
+                        <width>16</width>
+                        <height>16</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
@@ -355,20 +580,148 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="Metal">
+                <instance type="Credits">
                     <properties>
+                        <text>Art from: http://opengameart.org/content/lots-of-free-2d-tiles-and-sprites-by-hyptosis</text>
                         <initial-visibility>Visible</initial-visibility>
-                        <initial-frame>0</initial-frame>
-                        <collisions>Enabled</collisions>
+                        <font>Arial,-16</font>
+                        <color>0,0,0</color>
+                        <horizontal-alignment>Left</horizontal-alignment>
+                        <vertical-alignment>Top</vertical-alignment>
+                        <hotspot>Top-left</hotspot>
+                        <wrapping>Word</wrapping>
+                        <line-height>0</line-height>
                     </properties>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>126</x>
-                        <y>169</y>
+                        <x>147</x>
+                        <y>533</y>
                         <z>0</z>
-                        <width>32</width>
-                        <height>32</height>
+                        <width>611</width>
+                        <height>30</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="PlayerText">
+                    <properties>
+                        <text>Player 2 (arrows - ENTER to shoot)</text>
+                        <initial-visibility>Visible</initial-visibility>
+                        <font>Arial,-16</font>
+                        <color>0,0,0</color>
+                        <horizontal-alignment>Center</horizontal-alignment>
+                        <vertical-alignment>Top</vertical-alignment>
+                        <hotspot>Top-left</hotspot>
+                        <wrapping>Word</wrapping>
+                        <line-height>0</line-height>
+                    </properties>
+                    <instance-variables>
+                        <id>2</id>
+                    </instance-variables>
+                    <behavior-instances>
+                        <behavior-instance type="Pin" />
+                    </behavior-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>79</x>
+                        <y>357</y>
+                        <z>0</z>
+                        <width>132</width>
+                        <height>53</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="PlayerText">
+                    <properties>
+                        <text>Player 1 (WASD - space to shoot)</text>
+                        <initial-visibility>Visible</initial-visibility>
+                        <font>Arial,-16</font>
+                        <color>0,0,0</color>
+                        <horizontal-alignment>Center</horizontal-alignment>
+                        <vertical-alignment>Top</vertical-alignment>
+                        <hotspot>Top-left</hotspot>
+                        <wrapping>Word</wrapping>
+                        <line-height>0</line-height>
+                    </properties>
+                    <instance-variables>
+                        <id>1</id>
+                    </instance-variables>
+                    <behavior-instances>
+                        <behavior-instance type="Pin" />
+                    </behavior-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>34</x>
+                        <y>165</y>
+                        <z>0</z>
+                        <width>143</width>
+                        <height>51</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="BonusText">
+                    <properties>
+                        <text>+1</text>
+                        <initial-visibility>Visible</initial-visibility>
+                        <font>Arial,-40,400,0</font>
+                        <color>255,0,0</color>
+                        <horizontal-alignment>Center</horizontal-alignment>
+                        <vertical-alignment>Top</vertical-alignment>
+                        <hotspot>Center</hotspot>
+                        <wrapping>Word</wrapping>
+                        <line-height>0</line-height>
+                    </properties>
+                    <behavior-instances>
+                        <behavior-instance type="Fade">
+                            <properties>
+                                <active-at-start>Yes</active-at-start>
+                                <fade-in-time>0</fade-in-time>
+                                <wait-time>1</wait-time>
+                                <fade-out-time>1</fade-out-time>
+                                <destroy>After fade out</destroy>
+                            </properties>
+                        </behavior-instance>
+                        <behavior-instance type="Bullet">
+                            <properties>
+                                <speed>100</speed>
+                                <acceleration>0</acceleration>
+                                <gravity>0</gravity>
+                                <bounce-off-solids>No</bounce-off-solids>
+                                <set-angle>No</set-angle>
+                            </properties>
+                        </behavior-instance>
+                    </behavior-instances>
+                    <effect-instances>
+                        <effect-instance type="WarpRipple">
+                            <parameters>
+                                <amplitude>0.03</amplitude>
+                                <frequency>3</frequency>
+                                <speed>5</speed>
+                            </parameters>
+                        </effect-instance>
+                    </effect-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>-200</x>
+                        <y>101</y>
+                        <z>0</z>
+                        <width>113</width>
+                        <height>76</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>

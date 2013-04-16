@@ -6,13 +6,13 @@ function binaryUIDSearch(instance, array){
 
 	var start = 0, end = array.length - 1;
 	var center = Math.floor((start + end) / 2);
-	var searchedUID = instance["uid"];
+	var searchedUID = instance.uid;
 	while(start <= end){
 		center = Math.floor((start + end) / 2);
 		var current = array[center];
-		if(current["uid"] == searchedUID)
+		if(current.uid == searchedUID)
 			return {found:true, pos:center};
-		if(current["uid"] > searchedUID)
+		if(current.uid > searchedUID)
 			end = center - 1;
 		else
 			start = center + 1;

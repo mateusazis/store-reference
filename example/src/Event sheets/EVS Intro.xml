@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>EVS Intro</name>
+    <events>
+        <include>Items</include>
+        <event-block>
+            <conditions>
+                <condition id="0" name="On clicked" type="IntroButton" />
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" type="System">
+                    <param id="0" name="Layout">Game</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

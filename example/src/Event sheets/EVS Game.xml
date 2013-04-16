@@ -3,26 +3,242 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>EVS Game</name>
     <events>
-        <variable constant="1" name="MAX_ATTRACT_DIST" static="0" type="number">200</variable>
-        <variable constant="1" name="ATTRACT_COEF" static="0" type="number">1</variable>
-        <event-group description="" title="Main">
+        <include>Items</include>
+        <variable constant="1" name="START_RANGE" static="0" type="number">360</variable>
+        <event-block>
+            <conditions>
+                <condition id="-2" name="On start of layout" type="System" />
+            </conditions>
+            <actions />
             <sub-events>
                 <event-block>
                     <conditions>
-                        <condition id="-8" name="Compare two values" type="System">
-                            <param id="0" name="First value">distance(Car.X, Car.Y, Metal.X, Metal.Y)</param>
-                            <param id="1" name="Comparison">3</param>
-                            <param id="2" name="Second value">MAX_ATTRACT_DIST</param>
+                        <condition id="-11" name="For Each" type="System">
+                            <param id="0" name="Object">PlayerText</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" type="Player">
+                            <param id="0" name="Instance variable">playerNumber</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">PlayerText.id</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="-23" name="Move at angle" type="Metal">
-                            <param id="0" name="Angle">angle(self.X, self.Y, Car.X, Car.Y)</param>
-                            <param id="1" name="Distance">1</param>
+                        <action behavior="Pin" id="0" name="Pin to object" type="PlayerText">
+                            <param id="0" name="Pin to">Player</param>
+                            <param id="1" name="Mode">1</param>
                         </action>
                     </actions>
                 </event-block>
             </sub-events>
-        </event-group>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-11" name="For Each" type="System">
+                    <param id="0" name="Object">Player</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block>
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" type="Player">
+                            <param id="0" name="Instance variable">playerNumber</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Log" type="AiyraDebugger">
+                            <param id="0" name="Message">&quot;Picked: &quot; &amp; Player.PickedCount</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="2" name="Key is down" type="Keyboard">
+                                    <param id="0" name="Key">87 (W)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="8Direction" id="7" name="Simulate control" type="Player">
+                                    <param id="0" name="Control">2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="2" name="Key is down" type="Keyboard">
+                                    <param id="0" name="Key">68 (D)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="8Direction" id="7" name="Simulate control" type="Player">
+                                    <param id="0" name="Control">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="2" name="Key is down" type="Keyboard">
+                                    <param id="0" name="Key">83 (S)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="8Direction" id="7" name="Simulate control" type="Player">
+                                    <param id="0" name="Control">3</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="2" name="Key is down" type="Keyboard">
+                                    <param id="0" name="Key">65 (A)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="8Direction" id="7" name="Simulate control" type="Player">
+                                    <param id="0" name="Control">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-22" name="Else" type="System" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="2" name="Key is down" type="Keyboard">
+                                    <param id="0" name="Key">38 (Up arrow)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="8Direction" id="7" name="Simulate control" type="Player">
+                                    <param id="0" name="Control">2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="2" name="Key is down" type="Keyboard">
+                                    <param id="0" name="Key">39 (Right arrow)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="8Direction" id="7" name="Simulate control" type="Player">
+                                    <param id="0" name="Control">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="2" name="Key is down" type="Keyboard">
+                                    <param id="0" name="Key">40 (Down arrow)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="8Direction" id="7" name="Simulate control" type="Player">
+                                    <param id="0" name="Control">3</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="2" name="Key is down" type="Keyboard">
+                                    <param id="0" name="Key">37 (Left arrow)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="8Direction" id="7" name="Simulate control" type="Player">
+                                    <param id="0" name="Control">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="0" name="On key pressed" type="Keyboard">
+                    <param id="0" name="Key">32 (Space)</param>
+                </condition>
+                <condition behavior="StoreReference" id="3" name="Get first reference" type="Player">
+                    <param id="0" name="Reference name">&quot;&quot;</param>
+                    <param id="1" name="Object type">Item</param>
+                </condition>
+                <condition id="-7" name="Compare instance variable" type="Player">
+                    <param id="0" name="Instance variable">playerNumber</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Bullet" id="5" name="Set enabled" type="Item">
+                    <param id="0" name="State">1</param>
+                </action>
+                <action id="-13" name="Set boolean" type="Item">
+                    <param id="0" name="Instance variable">launching</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action behavior="StoreReference" id="2" name="Remove Reference" type="Player">
+                    <param id="0" name="Reference name">&quot;&quot;</param>
+                    <param id="1" name="Object type">Item</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="0" name="On key pressed" type="Keyboard">
+                    <param id="0" name="Key">13 (Return)</param>
+                </condition>
+                <condition behavior="StoreReference" id="3" name="Get first reference" type="Player">
+                    <param id="0" name="Reference name">&quot;&quot;</param>
+                    <param id="1" name="Object type">Item</param>
+                </condition>
+                <condition id="-7" name="Compare instance variable" type="Player">
+                    <param id="0" name="Instance variable">playerNumber</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Bullet" id="5" name="Set enabled" type="Item">
+                    <param id="0" name="State">1</param>
+                </action>
+                <action id="-13" name="Set boolean" type="Item">
+                    <param id="0" name="Instance variable">launching</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action behavior="StoreReference" id="2" name="Remove Reference" type="Player">
+                    <param id="0" name="Reference name">&quot;&quot;</param>
+                    <param id="1" name="Object type">Item</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block any="1">
+            <conditions>
+                <condition id="-18" name="On created" type="Item" />
+                <condition id="-2" name="On start of layout" type="System" />
+            </conditions>
+            <actions>
+                <action id="5" name="Set frame" type="Item">
+                    <param id="0" name="Frame number">random(self.AnimationFrameCount)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-18" name="On created" type="BonusText" />
+            </conditions>
+            <actions>
+                <action behavior="Bullet" id="3" name="Set angle of motion" type="BonusText">
+                    <param id="0" name="Angle">-90</param>
+                </action>
+            </actions>
+        </event-block>
     </events>
 </c2eventsheet>

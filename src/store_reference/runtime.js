@@ -117,7 +117,8 @@ cr.behaviors.StoreReference = function(runtime)
 		var searchResult = binaryUIDSearch(instance, refArray);
 		if(searchResult.found){
 			refArray.splice(searchResult.pos, 1);
-			this.onInstanceRemoved(searchResult.pos, varName);
+			if(this)
+				this.onInstanceRemoved(searchResult.pos, varName);
 		}
 		log("remove single");
 		printRefs(refArray);
@@ -221,11 +222,6 @@ cr.behaviors.StoreReference = function(runtime)
 	var Acts = function() {
 	};
 
-	
-
-	
-
-
 
 	behinstProto.onInstanceAdded = function(refArrayIndex, varName){
 		var orderArray = this.getOrderArray(varName);
@@ -264,6 +260,7 @@ cr.behaviors.StoreReference = function(runtime)
 		for(var i in instances){
 			var currentInstance = instances[i];
 			if(sameType(myRefs, currentInstance)){
+				log(1);
 				var searchResult = binaryUIDSearch(currentInstance, myRefs);
 				if(!searchResult.found){
 					var pos = searchResult.pos;
@@ -275,7 +272,8 @@ cr.behaviors.StoreReference = function(runtime)
 					var oldOnDestroy = currentInstance.onDestroy;
 					var removeFunc = this.RemoveSingleReference;
 					currentInstance.onDestroy = function(){
-						removeFunc(myRefs, this, varName);
+						//removeFunc(myRefs, this, varName);
+						removeFunc(myRefs, currentInstance, varName);
 						if(oldOnDestroy)
 							oldOnDestroy();
 					};
