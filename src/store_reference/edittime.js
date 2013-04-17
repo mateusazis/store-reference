@@ -6,7 +6,7 @@
 		"version":		"1.0",					// (float in x.y format) Behavior version - C2 shows compatibility warnings based on this
 		"description":	"Allows you to mimic instance variables that hold game objects.",
 		"author":		"Mateus Azis",
-		"help url":		"<your website or a manual entry on Scirra.com>",
+		"help url":		"http://www.scirra.com/FORUM/topic66528_post408472.html",
 		"category":		"General",				// Prefer to re-use existing categories, but you can set anything here
 		"flags":		0						// uncomment lines to enable flags...
 						| bf_onlyone			// can only be added once to an object, e.g. solid
