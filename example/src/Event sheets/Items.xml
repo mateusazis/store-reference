@@ -19,21 +19,21 @@
                     <param id="0" name="Object">Item</param>
                 </condition>
                 <condition behavior="StoreReference" id="1" inverted="1" name="Is reference set" type="Item">
-                    <param id="0" name="Reference name">&quot;&quot;</param>
+                    <param id="0" name="Reference name">&quot;owner&quot;</param>
                 </condition>
             </conditions>
             <actions>
                 <action behavior="StoreReference" id="0" name="Set Reference" type="Item">
-                    <param id="0" name="Reference name">&quot;&quot;</param>
+                    <param id="0" name="Reference name">&quot;owner&quot;</param>
                     <param id="1" name="Object type">Player</param>
+                </action>
+                <action behavior="StoreReference" id="3" name="Add Reference" type="Player">
+                    <param id="0" name="Reference name">&quot;ownedItems&quot;</param>
+                    <param id="1" name="Object type">Item</param>
                 </action>
                 <action id="-10" name="Set value" type="Item">
                     <param id="0" name="Instance variable">elapsed</param>
                     <param id="1" name="Value">random(START_RANGE)</param>
-                </action>
-                <action behavior="StoreReference" id="3" name="Add Reference" type="Player">
-                    <param id="0" name="Reference name">&quot;&quot;</param>
-                    <param id="1" name="Object type">Item</param>
                 </action>
             </actions>
         </event-block>
@@ -62,7 +62,7 @@
                                     <param id="0" name="Object">Item</param>
                                 </condition>
                                 <condition behavior="StoreReference" id="0" name="Get reference" type="Item">
-                                    <param id="0" name="Reference name">&quot;&quot;</param>
+                                    <param id="0" name="Reference name">&quot;owner&quot;</param>
                                     <param id="1" name="Object type">Player</param>
                                 </condition>
                             </conditions>
@@ -96,7 +96,7 @@
                 <event-block>
                     <conditions>
                         <condition behavior="StoreReference" id="0" name="Get reference" type="Item">
-                            <param id="0" name="Reference name">&quot;&quot;</param>
+                            <param id="0" name="Reference name">&quot;owner&quot;</param>
                             <param id="1" name="Object type">Player</param>
                         </condition>
                     </conditions>

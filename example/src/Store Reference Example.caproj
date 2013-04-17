@@ -10,6 +10,7 @@
         <plugin author="&lt;your name/organisation&gt;" id="AiyraDebugger" version="1">AiyraDebugger</plugin>
         <plugin author="Scirra" id="Button" version="1">Button</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
+        <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
@@ -42,7 +43,7 @@
         <prop name="Fullscreen in browser">Off</prop>
         <prop name="Hide address bar">No</prop>
         <prop name="Loader style">Progress bar &amp; logo</prop>
-        <prop name="Preview browser">Chrome</prop>
+        <prop name="Preview browser">(default)</prop>
         <prop name="Sampling">Linear</prop>
         <prop name="Use iOS retina display">Never</prop>
     </configuration-settings>
@@ -164,8 +165,40 @@
                 </effect-type>
             </effects>
         </object-type>
+        <object-type name="CollisionCode">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                    <frame duration="1" hotspotX="0.500879" hotspotY="0.505376" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Mouse">
+            <plugin id="Mouse" />
+        </object-type>
+        <object-type name="CodeLaunch">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                    <frame duration="1" hotspotX="0.500888" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="ToggleCodeText">
+            <plugin id="Text" />
+            <instance-variables>
+                <instance-variable name="showing" type="boolean" />
+            </instance-variables>
+        </object-type>
     </object-folder>
-    <families />
+    <families>
+        <family name="Code" plugin-id="Sprite">
+            <members>
+                <member>CodeLaunch</member>
+                <member>CollisionCode</member>
+            </members>
+        </family>
+    </families>
     <layout-folder expanded="1">
         <layout>Game.xml</layout>
         <layout>Intro.xml</layout>
@@ -178,6 +211,7 @@
     <global-instances>
         <global-instance type="Keyboard" />
         <global-instance type="AiyraDebugger" />
+        <global-instance type="Mouse" />
     </global-instances>
     <sounds-folder expanded="1" />
     <music-folder expanded="1" />

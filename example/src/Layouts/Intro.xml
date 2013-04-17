@@ -111,7 +111,7 @@
                                 <deceleration>500</deceleration>
                                 <directions>8 directions</directions>
                                 <set-angle>360 degree (smooth)</set-angle>
-                                <default-controls>Yes</default-controls>
+                                <default-controls>No</default-controls>
                             </properties>
                         </behavior-instance>
                         <behavior-instance type="StoreReference" />
@@ -303,7 +303,7 @@
                                 <deceleration>500</deceleration>
                                 <directions>8 directions</directions>
                                 <set-angle>360 degree (smooth)</set-angle>
-                                <default-controls>Yes</default-controls>
+                                <default-controls>No</default-controls>
                             </properties>
                         </behavior-instance>
                         <behavior-instance type="StoreReference" />
