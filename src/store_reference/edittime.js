@@ -79,11 +79,11 @@ AddObjectParam("Object type", "The object type to be stored");									// a butt
 AddAction(0, af_none, "Set Reference", "General", "Set {0} to {1}", "Stores a reference to an object!", "SetReference");
 
 AddStringParam("Reference name", "The name of the reference variable", "\"\"");		// a string
-AddAction(1, af_none, "Clear Reference", "General", "Clears variable {0}", "Clears all references stored in the variable!", "ClearReference");
+AddAction(1, af_none, "Clear Reference", "General", "Clear variable {0}", "Clears all references stored in the variable!", "ClearReference");
 
 AddStringParam("Reference name", "The name of the reference variable", "\"\"");		// a string
 AddObjectParam("Object type", "The object type to be removed");									// a button to click and pick an object type
-AddAction(2, af_none, "Remove Reference", "General", "Removes {1} from {0}", "Clears a reference stored in the variable!", "RemoveReference");
+AddAction(2, af_none, "Remove Reference", "General", "Remove {1} from {0}", "Clears a reference stored in the variable!", "RemoveReference");
 
 AddStringParam("Reference name", "The name of the reference variable", "\"\"");		// a string
 AddObjectParam("Object type", "The object type to be stored");									// a button to click and pick an object type
